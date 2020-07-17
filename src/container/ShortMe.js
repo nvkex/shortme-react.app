@@ -13,10 +13,6 @@ class ShortMe extends React.Component {
         slug: ""
     }
 
-    componentDidMount() {
-        console.log(this.props);
-    }
-
     inputURL = event => {
         this.setState({ url: event.target.value });
     }
