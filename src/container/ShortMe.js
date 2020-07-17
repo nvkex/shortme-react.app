@@ -24,7 +24,7 @@ class ShortMe extends React.Component {
         })
             .then(res => {
                 this.setState({ submitted: true, slug: res.data.slug, status: 1 });
-                document.getElementById("url").value = "https://shortme.netlify.app/" + res.data.slug;
+                document.getElementById("url").value = "https://nvkex-short-me.herokuapp.com/" + res.data.slug;
                 // document.getElementById("url").value = this.props.location.pathname + "/" + res.data.slug;
                 // console.log(res.data.slug);
             })
