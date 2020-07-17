@@ -36,7 +36,7 @@ class App extends React.Component {
       <div>
         <div className="loader-container">
           <div className="loader text-white text-center">
-            <div class="lds-ripple"><div></div><div></div></div>
+            <div className="lds-ripple"><div></div><div></div></div>
             <br />
             <p className="display-4 text-center text-muted">Loading</p>
           </div>

@@ -10,7 +10,8 @@ class ShortMe extends React.Component {
     state = {
         submitted: false,
         url: "",
-        slug: ""
+        slug: "",
+        status: 0
     }
 
     inputURL = event => {
@@ -22,13 +23,13 @@ class ShortMe extends React.Component {
             url: this.state.url
         })
             .then(res => {
-                this.setState({ submitted: true, slug: res.data.slug });
+                this.setState({ submitted: true, slug: res.data.slug, status: 1 });
                 document.getElementById("url").value = "https://shortme.netlify.app/" + res.data.slug;
                 // document.getElementById("url").value = this.props.location.pathname + "/" + res.data.slug;
-                console.log(res);
                 // console.log(res.data.slug);
             })
             .catch(err => {
+                this.setState({status:-1});
                 console.log(err, "ERROR");
             })
     }
@@ -37,16 +38,39 @@ class ShortMe extends React.Component {
         const shortenedURL = document.getElementById("url");
         shortenedURL.select();
         document.execCommand("copy");
-        alert("Copied");
+        this.setState({status: 2});
     }
 
     render() {
+        let status = null;
         let btnContent = (
             <button
                 className="btn btn-outline-light btn-lg my-4"
                 onClick={this.shortenURL}
             >Shorten</button>
         );
+
+        if(this.state.status === -1){
+            status = (
+                <div className = "error-container my-4 text-center text-danger">
+                    <strong>An error has occured! Please check the url.</strong>
+                </div>
+            );
+        }
+        else if(this.state.status === 1){
+            status = (
+                <div className = "error-container my-4 text-center text-success">
+                    <strong>Success!</strong>
+                </div>
+            )
+        }
+        else if(this.state.status === 2){
+            status = (
+                <div className = "error-container my-4 text-center text-info">
+                    <strong>Copied to clipboard!</strong>
+                </div>
+            )
+        }
 
         if (this.state.submitted) {
             btnContent = (
@@ -76,6 +100,8 @@ class ShortMe extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                {status}
             </div>
         );
     }
