@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import Redirector from './components/Redirector';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+          <Switch>
+            <Route path="/:slug" exact component={Redirector} />
+            <Route path="/" exact component={App} />
+          </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

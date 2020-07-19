@@ -3,7 +3,6 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import ShortMe from './container/ShortMe';
 import axios from 'axios';
 
-import Redirector from './components/Redirector';
 import './App.css';
 
 class App extends React.Component {
@@ -43,7 +42,6 @@ class App extends React.Component {
         </div>
         <BrowserRouter>
           <Switch>
-            <Route path="/:slug" exact component={Redirector} />
             <Route path="/" exact component={ShortMe} />
           </Switch>
         </BrowserRouter>

@@ -17,4 +17,4 @@ You will also see any lint errors in the console.
 
 
 ### Todos
-- [ ] Redirect to end URL
+- [x] Redirect to end URL
